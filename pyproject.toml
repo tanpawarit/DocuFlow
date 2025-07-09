@@ -1,0 +1,11 @@
+[project]
+name = "docuflow"
+version = "0.1.0"
+description = "Thai OCR applications"
+authors = ["pawarison.ty@gmail.com"]
+dependencies = [
+    "Pillow>=10.0.0",
+    "requests>=2.31.0",
+    "PyYAML>=6.0.0",
+    "mistralai>=1.9.1",
+]
