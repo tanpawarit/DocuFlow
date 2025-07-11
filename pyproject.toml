@@ -1,11 +1,57 @@
 [project]
 name = "docuflow"
 version = "0.1.0"
-description = "Thai OCR applications"
-authors = ["pawarison.ty@gmail.com"]
+description = "Thai OCR applications with Mistral AI and Gradio"
+authors = [
+  { name = "Your Name", email = "your@email.com" }
+]
+readme = "README.md"
+requires-python = ">=3.9"
 dependencies = [
     "Pillow>=10.0.0",
     "requests>=2.31.0",
     "PyYAML>=6.0.0",
     "mistralai>=1.9.1",
+    "gradio>=4.0.0",
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    "opencv-python>=4.8.0",
+    "python-multipart>=0.0.6",
+    "pydantic>=2.0.0",
+    "fastapi>=0.100.0",
+    "uvicorn>=0.23.0",
+    "aiofiles>=23.0.0",
+    "python-jose[cryptography]>=3.3.0",
+    "python-dotenv>=1.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+    "pre-commit>=3.0.0"
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.hatch.build.targets.wheel]
+packages = [
+  "src/ocr",
+  "src/ui",
+  "src/utils",
+  "synthetic_generator"
 ]
