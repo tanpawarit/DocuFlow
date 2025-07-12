@@ -11,6 +11,16 @@ def load_config(path: str = "config.yaml") -> dict[str, Any]:
 
 
 def get_config_value(key: str, default: Any = None, path: str = "config.yaml") -> Any:
-    """Get a value from the YAML config file by key, with optional default."""
-    config: dict[str, Any] = load_config(path)
-    return config.get(key, default)
+    """Get a value from the YAML config file by key, with optional default.
+
+    Supports nested keys using dot notation (e.g., 'parent.child.key').
+    """
+    config = load_config(path)
+    keys = key.split('.')
+    value = config
+    for k in keys:
+        if isinstance(value, dict):
+            value = value.get(k)
+        else:
+            return default
+    return value if value is not None else default
